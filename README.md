@@ -38,3 +38,4 @@ A modern, interactive portfolio website built with React, TypeScript, and Framer
    ```
 
 The app will be available at `http://localhost:3000`
+# yb-portfolio
