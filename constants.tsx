@@ -34,9 +34,11 @@ export const PROJECTS: Project[] = [
 ];
 
 export const MY_DEFAULTS: DefaultItem[] = [
-  { label: 'How I Work', value: 'I build a simple version first, then improve it from there.' },
-  { label: 'What I Care About', value: 'Making things that are easy and straightforward to use.' },
-  { label: 'My Strength', value: "I'm good at explaining ideas and getting everyone on the same page." }
+  { label: 'default mode', value: 'i build things to learn how they work / build first refine later' },
+  { label: 'i care about', value: 'clean ux and thoughtful details' },
+  { label: 'i enjoy', value: 'problem solving and making things work' },
+  { label: 'currently learning', value: 'React, TypeScript, and modern frontend patterns.' },
+  { label: 'strength', value: 'explaining ideas clearly and collaborating' }
 ];
 
 export const SKILLS: SkillCategory[] = [

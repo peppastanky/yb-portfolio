@@ -2,8 +2,9 @@
 import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { PROJECTS } from '../constants';
+import { Project } from '../types';
 
-const ProjectCard: React.FC<{ project: any; idx: number }> = ({ project, idx }) => {
+const ProjectCard: React.FC<{ project: Project; idx: number }> = ({ project, idx }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   
   const x = useMotionValue(0);
