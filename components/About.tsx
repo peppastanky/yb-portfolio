@@ -33,7 +33,7 @@ const About: React.FC = () => {
         <div className="mb-40">
            <div className="overflow-hidden mb-4">
               <motion.h2 variants={revealVars} className="text-[10px] font-bold uppercase tracking-[1em] text-primary/60">
-                01 — IDENTITY
+                01 — ABOUT
               </motion.h2>
            </div>
            <div className="flex flex-col md:flex-row items-baseline gap-x-8">
@@ -53,15 +53,15 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-60">
            <div className="lg:col-span-5">
               <motion.div 
-                initial={{ opacity: 0, scale: 0.95, filter: "grayscale(100%)" }}
-                whileInView={{ opacity: 1, scale: 1, filter: "grayscale(100%)" }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                 className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/10 glass group"
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop" 
-                  alt="Builder Identity"
+                  src="/profilepic.jpg" 
+                  alt="A profile picture of Yu Bing"
                   className="w-full h-full object-cover contrast-110 transition-transform duration-1000 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-primary/10 mix-blend-overlay opacity-0 group-hover:opacity-40 transition-opacity duration-1000"></div>
@@ -69,20 +69,19 @@ const About: React.FC = () => {
            </div>
 
            <div className="lg:col-span-7 flex flex-col justify-center space-y-12">
-              <motion.p 
-                variants={revealVars}
-                className="text-3xl md:text-5xl font-light tracking-tight text-white/90 leading-tight"
-              >
-                Information Systems at SMU. <br/>
-                <span className="text-muted/40 italic font-serif">I value clarity over hype,</span> 
-                thoughtful details over flashy trends.
-              </motion.p>
+              <motion.div variants={revealVars}>
+                <p className="text-4xl md:text-6xl tracking-tighter text-white/95 leading-none font-light">
+                  Hi, I’m <span className="font-serif italic font-normal">Yu Bing</span>.
+                </p>
+                <p className="mt-4 text-base text-white/50 tracking-widest uppercase">
+                  Information Systems Student
+                </p>
+              </motion.div>
               
               <motion.div variants={revealVars} className="h-px w-20 bg-primary/40"></motion.div>
               
               <motion.p variants={revealVars} className="text-xl text-muted leading-relaxed max-w-xl">
-                My work is driven by a simple default: build first to understand the problem, 
-                then iterate relentlessly until the details feel intentional and the UX feels invisible.
+                These days, I’m usually building things with React and TypeScript. I enjoy the back-and-forth of building, breaking, fixing, and refining until things start to feel right.
               </motion.p>
            </div>
         </div>

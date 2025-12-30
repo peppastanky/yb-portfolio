@@ -30,7 +30,7 @@ const Experience: React.FC = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="group relative pl-0 md:pl-20"
             >
-              <div className="absolute -left-10 top-0 text-[10rem] md:text-[14rem] font-bold text-white/[0.02] group-hover:text-primary/[0.04] transition-all duration-1000 select-none pointer-events-none -z-10 leading-none">
+              <div className="absolute -left-10 top-0 text-[10rem] md:text-[14rem] font-bold text-white/[0.2] group-hover:text-primary/[0.25] transition-all duration-1000 select-none pointer-events-none -z-10 leading-none">
                 {item.period.split('-')[0].trim().slice(-2)}
               </div>
 
