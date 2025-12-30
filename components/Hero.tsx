@@ -1,6 +1,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
+import ScrambleText from './ScrambleText';
 import Magnetic from './Magnetic';
 import { CONTACT } from '../constants';
 
@@ -123,9 +124,10 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.8, duration: 1 }}
             className="mt-4 flex flex-col items-center"
           >
-            <p className="text-[10px] md:text-[12px] font-bold text-white uppercase tracking-[1em] mb-12 opacity-80">
-              Information Systems • Builder
-            </p>
+            <ScrambleText 
+              text="Information Systems • Builder"
+              className="text-[10px] md:text-[12px] font-bold text-white uppercase tracking-[1em] mb-12 opacity-80"
+            />
 
             <div className="flex items-center space-x-8">
               {socialLinks.map((link, idx) => (
