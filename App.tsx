@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import Lenis from '@studio-freight/lenis';
 import Layout from './components/Layout';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -29,6 +30,32 @@ const Home: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate }) 
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('home');
+
+  // Initialize Lenis smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   // Scrolls to top and changes the "page"
   const handleNavigate = (page: string) => {

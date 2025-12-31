@@ -154,6 +154,7 @@ const About: React.FC = () => {
           <div className="relative">
             <div 
               ref={scrollContainerRef}
+              data-lenis-prevent
               className="h-[400px] overflow-y-scroll snap-y snap-mandatory scrollbar-hide"
               style={{
                 maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
