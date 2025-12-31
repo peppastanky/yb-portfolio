@@ -57,8 +57,8 @@ const About: React.FC = () => {
   };
 
   const subtitleVariants: Variants = {
-    active: { opacity: 1 },
-    inactive: { opacity: 0 }
+    active: { opacity: 1, color: '#CA79FC' },
+    inactive: { opacity: 1, color: '#6B7280' }
   };
 
   const containerVars: Variants = {

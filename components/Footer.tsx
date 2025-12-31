@@ -81,11 +81,9 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="w-full flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.4em] text-muted space-y-6 md:space-y-0 opacity-40 hover:opacity-100 transition-opacity duration-700">
-          <div>© 2024 Yu Bing • Information Systems Student</div>
+          <div>© 2025 Yu Bing • Information Systems Student</div>
           <div className="flex space-x-3 items-center">
-            <span>Built with focus</span>
-            <span className="text-primary">•</span>
-            <span>Refined with care</span>
+            
           </div>
         </div>
       </div>
