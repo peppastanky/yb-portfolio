@@ -1,13 +1,65 @@
 
-import React, { useState } from 'react';
-import { motion, Variants, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, Variants } from 'framer-motion';
 import { MY_DEFAULTS } from '../constants';
-import Magnetic from './Magnetic';
 
 const About: React.FC = () => {
-  const [scrollIdx, setScrollIdx] = useState<number | null>(null);
-  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
-  const activeIdx = hoverIdx ?? scrollIdx;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const items = container.querySelectorAll('.default-item');
+      const containerRect = container.getBoundingClientRect();
+      const containerCenter = containerRect.top + containerRect.height / 2;
+      
+      let closestIndex = 0;
+      let minDistance = Infinity;
+      
+      items.forEach((item, idx) => {
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.top + itemRect.height / 2;
+        const distance = Math.abs(itemCenter - containerCenter);
+        
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = idx;
+        }
+      });
+      
+      if (closestIndex !== activeIndex) {
+        setActiveIndex(closestIndex);
+      }
+    };
+
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Set initial state
+    
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [activeIndex]);
+
+  // Animation variants for the title and subtitle text.
+  // Framer Motion will animate between these states.
+  const textVariants: Variants = {
+    active: {
+      scale: 1,
+      opacity: 1,
+      filter: 'blur(0px)',
+    },
+    inactive: {
+      scale: 0.9,
+      opacity: 0.5,
+      filter: 'blur(2px)',
+    }
+  };
+
+  const subtitleVariants: Variants = {
+    active: { opacity: 1 },
+    inactive: { opacity: 0 }
+  };
 
   const containerVars: Variants = {
     hidden: { opacity: 0 },
@@ -21,21 +73,6 @@ const About: React.FC = () => {
     hidden: { y: "60%", opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1,
-      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
-    }
-  };
-
-  const listContainerVars: Variants = {
-    visible: {
-      transition: { staggerChildren: 0.05 }
-    }
-  };
-  
-  const listItemVars: Variants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
       opacity: 1,
       transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
     }
@@ -69,7 +106,6 @@ const About: React.FC = () => {
               </div>
            </div>
         </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-60">
            <div className="lg:col-span-5">
               <motion.div 
@@ -87,7 +123,6 @@ const About: React.FC = () => {
                 <div className="absolute inset-0 bg-primary/10 mix-blend-overlay opacity-0 group-hover:opacity-40 transition-opacity duration-1000"></div>
               </motion.div>
            </div>
-
            <div className="lg:col-span-7 flex flex-col justify-center space-y-12">
               <motion.div variants={revealVars}>
                 <p className="text-4xl md:text-6xl tracking-tighter text-white/95 leading-none font-light">
@@ -97,9 +132,7 @@ const About: React.FC = () => {
                   Information Systems Student
                 </p>
               </motion.div>
-              
               <motion.div variants={revealVars} className="h-px w-20 bg-primary/40"></motion.div>
-              
               <motion.p variants={revealVars} className="text-xl text-muted leading-relaxed max-w-xl">
                 These days, I’m usually building things with React and TypeScript. I enjoy the back-and-forth of building, breaking, fixing, and refining until things start to feel right.
               </motion.p>
@@ -108,75 +141,55 @@ const About: React.FC = () => {
 
         <div>
           <div className="overflow-hidden mb-12">
-            <motion.h2 variants={revealVars} className="text-[10px] font-bold uppercase tracking-[1em] text-primary/60">
+            <motion.h2 
+              variants={revealVars}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              className="text-[10px] font-bold uppercase tracking-[1em] text-primary/60"
+            >
               My Defaults
             </motion.h2>
           </div>
-          <motion.div 
-            variants={listContainerVars}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.2 }}
-            className="relative flex flex-col"
-            onMouseLeave={() => setHoverIdx(null)}
-            onViewportLeave={() => setScrollIdx(null)}
-          >
-            {MY_DEFAULTS.map((item, idx) => (
-              <motion.div
-                key={idx}
-                variants={listItemVars}
-                onMouseEnter={() => setHoverIdx(idx)}
-                onViewportEnter={() => setScrollIdx(idx)}
-                viewport={{ amount: 0.5 }}
-                className="group relative border-t border-white/5"
-              >
+          <div className="relative">
+            <div 
+              ref={scrollContainerRef}
+              className="h-[400px] overflow-y-scroll snap-y snap-mandatory scrollbar-hide"
+              style={{
+                maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
+              }}
+            >
+              <div className="h-[140px]"></div>
+              {MY_DEFAULTS.map((item, idx) => (
                 <div
-                  className="grid grid-cols-12 items-baseline py-8 px-4 md:px-12"
+                  key={idx}
+                  className="default-item h-[120px] snap-center flex flex-col items-center justify-center text-center"
                 >
-                  <div className="col-span-1">
-                    <motion.span 
-                      className="text-xs text-white/20 font-mono"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.5 }}
-                    >
-                      (0{idx + 1})
-                    </motion.span>
-                  </div>
-                  <div className="col-span-11">
-                    <h3 className={`text-4xl md:text-6xl font-bold tracking-tight transition-all duration-700 ${
-                      activeIdx === null || activeIdx === idx ? 'text-white' : 'text-white/10 blur-[1px]'
-                    }`}>
-                      {item.label}
-                    </h3>
-                    <p className={`text-xl md:text-2xl italic font-serif font-light pt-2 transition-all duration-700 ${
-                      activeIdx === null ? 'text-white/50' :
-                      activeIdx === idx ? 'text-primary' :
-                      'text-white/10 blur-[1px]'
-                    }`}>
-                      {item.value}
-                    </p>
-                  </div>
+                  <motion.h3 
+                    variants={textVariants}
+                    animate={activeIndex === idx ? 'active' : 'inactive'}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                    className="text-4xl md:text-6xl font-bold tracking-tight text-white"
+                  >
+                    {item.label}
+                  </motion.h3>
+                  <motion.p 
+                    variants={subtitleVariants}
+                    animate={activeIndex === idx ? 'active' : 'inactive'}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                    className="mt-1 text-lg italic font-serif text-primary"
+                  >
+                    {item.value}
+                  </motion.p>
                 </div>
-
-                <AnimatePresence>
-                  {activeIdx === idx && (
-                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.1 } }}
-                        exit={{ opacity: 0, transition: { duration: 0.4 } }}
-                        className="pointer-events-none absolute inset-0 -z-10"
-                        aria-hidden
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent opacity-50 blur-3xl"></div>
-                        <div className="absolute inset-y-0 left-1/2 w-[200%] -translate-x-1/2 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(138,92,245,0.08)_0%,rgba(138,92,245,0)_100%)]"></div>
-                     </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-             <div className="border-b border-white/5"></div>
-          </motion.div>
+              ))}
+              <div className="h-[140px]"></div>
+            </div>
+            <div className="absolute inset-y-1/2 left-0 w-full h-[120px] -translate-y-1/2 pointer-events-none">
+              <div className="w-full h-full border-y border-white/10"></div>
+            </div>
+          </div>
         </div>
       </motion.div>
     </section>

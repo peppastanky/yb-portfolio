@@ -5,6 +5,8 @@ export interface Project {
   description: string;
   tags: string[];
   link?: string;
+  subheadline?: string;
+  contributions?: string[];
 }
 
 export interface DefaultItem {

@@ -20,15 +20,15 @@ export const PROJECTS: Project[] = [
   {
     id: 'eventurer',
     title: 'Eventurer',
-    description: 'A platform designed to simplify event discovery and planning. Focused on clean interactions and a frictionless user journey.',
-    tags: ['React', 'Next.js', 'UI/UX Design'],
-    link: '#'
-  },
-  {
-    id: 'iteration-lab',
-    title: 'Learning Experiments',
-    description: 'A collection of ongoing explorations in modern frontend patterns, focusing on TypeScript and performance optimization.',
-    tags: ['TypeScript', 'Design Systems', 'React'],
+    subheadline: 'A full-stack web app for student event discovery.',
+    description: "I built this to solve a personal frustration: finding student events was too disorganized. My focus was a clean, responsive UI that made event discovery and planning feel immediate and clear.",
+    tags: ['React', 'TypeScript', 'Firebase', 'Google Maps API', 'Eventbrite API', 'UX Design', 'Frontend Development'],
+    contributions: [
+      'Owned the end-to-end UX design process, from wireframes to final implementation.',
+      'Developed the entire frontend using React and TypeScript, with a focus on usability and interaction detail.',
+      'Engineered the core user flows, including authentication, event discovery, and RSVP/bookmarking.',
+      'Integrated third-party APIs for maps (Google), events (Eventbrite), and user accounts (Firebase).'
+    ],
     link: '#'
   }
 ];
