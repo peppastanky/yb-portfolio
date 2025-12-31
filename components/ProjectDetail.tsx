@@ -67,17 +67,27 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onNavigateBack
           transition={{ delay: 0.3, duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
           {project.video ? (
-            <video 
-              className="w-full h-full object-cover"
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-            >
-              <source src={project.video} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            project.video.includes('youtube.com') || project.video.includes('youtu.be') ? (
+              <iframe 
+                src={project.video}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={project.title}
+              />
+            ) : (
+              <video 
+                className="w-full h-full object-cover"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <source src={project.video} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )
           ) : project.image ? (
             <img 
               src={project.image} 

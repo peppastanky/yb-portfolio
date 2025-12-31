@@ -41,7 +41,7 @@ export const PROJECTS: Project[] = [
     },
     image: '/eventurer-preview.jpg',
     link: '#',
-    video: '/eventurerdemo.mp4'
+    video: 'https://www.youtube.com/embed/m4lyZS70TMc'
   }
 ];
 
