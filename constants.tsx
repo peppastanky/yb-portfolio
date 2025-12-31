@@ -20,16 +20,28 @@ export const PROJECTS: Project[] = [
   {
     id: 'eventurer',
     title: 'Eventurer',
-    subheadline: 'A full-stack web app for student event discovery.',
-    description: "I built this to solve a personal frustration: finding student events was too disorganized. My focus was a clean, responsive UI that made event discovery and planning feel immediate and clear.",
-    tags: ['React', 'TypeScript', 'Firebase', 'Google Maps API', 'Eventbrite API', 'UX Design', 'Frontend Development'],
+    subheadline: 'A student-built web app for discovering events and forming teams.',
+    description: "Eventurer helps students find events and connect with others based on shared interests and availability. I focused on the frontend—building user-facing interfaces, designing interaction flows, and integrating client-side APIs to make the experience feel clear and responsive.",
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Three.js', 'Blender', 'Google Maps API', 'Gemini API', 'UX Design'],
     contributions: [
-      'Owned the end-to-end UX design process, from wireframes to final implementation.',
-      'Developed the entire frontend using React and TypeScript, with a focus on usability and interaction detail.',
-      'Engineered the core user flows, including authentication, event discovery, and RSVP/bookmarking.',
-      'Integrated third-party APIs for maps (Google), events (Eventbrite), and user accounts (Firebase).'
+      'Built user-facing interfaces with React and TypeScript, focusing on component structure and smooth user flows.',
+      'Designed and implemented a 3D landing page using Three.js and assets created in Blender, with a non-3D fallback for performance and accessibility.',
+      'Integrated Google Maps API to add a "How to get there" feature, giving users location and navigation context.',
+      'Built an FAQ chatbot using Gemini API to reduce friction and provide quick, contextual help.',
+      'Designed event discovery flows with Framer Motion, refining interaction details like hover states and transitions to guide attention.',
+      'Worked closely with teammates who handled backend (Firebase, Express.js) and integrations (Stripe, Eventbrite), connecting frontend features to their systems.'
     ],
-    link: '#'
+    techStack: {
+      frontend: ['TypeScript', 'React', 'Tailwind CSS', 'Framer Motion'],
+      backend: ['Firebase', 'Express.js'],
+      database: ['Cloud Firestore'],
+      apis: ['Stripe', 'Gemini API', 'Google Maps API', 'Eventbrite'],
+      deployment: ['Vercel', 'Vite'],
+      additional: ['Three.js', 'Blender']
+    },
+    image: '/eventurer-preview.jpg',
+    link: '#',
+    video: '/eventurerdemo.mp4'
   }
 ];
 

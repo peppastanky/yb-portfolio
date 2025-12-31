@@ -38,13 +38,22 @@ const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
         viewport={{ once: false, amount: 0.1 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="relative aspect-video bg-white/[0.02] rounded-[2rem] border border-white/10 transition-all duration-700 hover:border-primary/30 hover:bg-white/[0.04] group">
+        <div className="relative aspect-video bg-white/[0.02] rounded-[2rem] border border-white/10 transition-all duration-700 hover:border-primary/30 hover:bg-white/[0.04] group overflow-hidden">
+            {/* Project Image Background */}
+            {featuredProject.image && (
+              <img 
+                src={featuredProject.image} 
+                alt={featuredProject.title}
+                className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700"
+              />
+            )}
+            
             {/* Background Decorative Elements */}
             <div className="absolute inset-0 w-full h-full bg-gradient-to-tr from-primary/10 to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-gradient-to-tr from-primary/20 to-primary/5 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-all duration-1000"></div>
 
             {/* Overlaid Content */}
-            <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-between">
+            <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-between bg-gradient-to-t from-black/60 via-black/40 to-transparent">
               {/* Top: Title & Description */}
               <div>
                 <h4 className="text-4xl md:text-5xl font-bold tracking-tighter text-white group-hover:text-primary transition-colors duration-500">
@@ -66,12 +75,19 @@ const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
                 </div>
                 <button 
                   onClick={() => onNavigate(`project:${featuredProject.id}`)}
-                  className="group/btn inline-flex items-center space-x-4 shrink-0"
+                  className="group/btn inline-flex items-center justify-center space-x-3 px-8 py-4 rounded-full bg-primary/90 hover:bg-primary border border-primary hover:border-white/20 transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20 hover:shadow-primary/40"
                 >
-                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/50 group-hover/btn:text-primary transition-colors duration-500">
+                  <span className="text-sm font-bold uppercase tracking-[0.2em] text-black">
                     View Project
                   </span>
-                  <div className="w-8 h-px bg-white/15 group-hover/btn:w-16 group-hover/btn:bg-primary transition-all duration-700"></div>
+                  <svg 
+                    className="w-4 h-4 text-black group-hover/btn:translate-x-1 transition-transform duration-300" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </button>
               </div>
             </div>

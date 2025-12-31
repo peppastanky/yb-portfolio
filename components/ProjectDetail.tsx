@@ -61,12 +61,34 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onNavigateBack
         )}
         
         <motion.div 
-          className="aspect-video bg-white/5 rounded-2xl my-16 flex items-center justify-center border border-white/10"
+          className="aspect-video bg-white/5 rounded-2xl my-16 overflow-hidden border border-white/10"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-2xl text-muted/40">Image or Video Placeholder</p>
+          {project.video ? (
+            <video 
+              className="w-full h-full object-cover"
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src={project.video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : project.image ? (
+            <img 
+              src={project.image} 
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <p className="text-2xl text-muted/40">Image or Video Placeholder</p>
+            </div>
+          )}
         </motion.div>
 
         <motion.div
@@ -77,6 +99,86 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onNavigateBack
           <div className="prose prose-invert prose-lg max-w-none text-muted/80 leading-relaxed">
             <p>{project.description}</p>
           </div>
+
+          {project.techStack && (
+            <div className="mt-16">
+              <h3 className="text-2xl font-bold tracking-tight mb-8">Tech Stack</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {project.techStack.frontend && (
+                  <div>
+                    <h4 className="text-sm font-bold uppercase tracking-widest text-primary/70 mb-3">Frontend</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.frontend.map(tech => (
+                        <span key={tech} className="text-xs bg-white/5 text-white/80 px-3 py-1.5 rounded-full">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {project.techStack.backend && (
+                  <div>
+                    <h4 className="text-sm font-bold uppercase tracking-widest text-primary/70 mb-3">Backend</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.backend.map(tech => (
+                        <span key={tech} className="text-xs bg-white/5 text-white/80 px-3 py-1.5 rounded-full">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {project.techStack.database && (
+                  <div>
+                    <h4 className="text-sm font-bold uppercase tracking-widest text-primary/70 mb-3">Database</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.database.map(tech => (
+                        <span key={tech} className="text-xs bg-white/5 text-white/80 px-3 py-1.5 rounded-full">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {project.techStack.apis && (
+                  <div>
+                    <h4 className="text-sm font-bold uppercase tracking-widest text-primary/70 mb-3">APIs</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.apis.map(tech => (
+                        <span key={tech} className="text-xs bg-white/5 text-white/80 px-3 py-1.5 rounded-full">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {project.techStack.deployment && (
+                  <div>
+                    <h4 className="text-sm font-bold uppercase tracking-widest text-primary/70 mb-3">Deployment</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.deployment.map(tech => (
+                        <span key={tech} className="text-xs bg-white/5 text-white/80 px-3 py-1.5 rounded-full">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {project.techStack.additional && (
+                  <div>
+                    <h4 className="text-sm font-bold uppercase tracking-widest text-primary/70 mb-3">Additional</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.additional.map(tech => (
+                        <span key={tech} className="text-xs bg-white/5 text-white/80 px-3 py-1.5 rounded-full">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
 
           {project.contributions && (
             <div className="mt-16">

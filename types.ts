@@ -7,6 +7,16 @@ export interface Project {
   link?: string;
   subheadline?: string;
   contributions?: string[];
+  image?: string;
+  video?: string;
+  techStack?: {
+    frontend?: string[];
+    backend?: string[];
+    database?: string[];
+    apis?: string[];
+    deployment?: string[];
+    additional?: string[];
+  };
 }
 
 export interface DefaultItem {
