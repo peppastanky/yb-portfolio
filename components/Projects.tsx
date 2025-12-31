@@ -38,7 +38,10 @@ const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
         viewport={{ once: false, amount: 0.1 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="relative aspect-video bg-white/[0.02] rounded-[2rem] border border-white/10 transition-all duration-700 hover:border-primary/30 hover:bg-white/[0.04] group overflow-hidden">
+        <div 
+          onClick={() => onNavigate(`project:${featuredProject.id}`)}
+          className="relative aspect-video bg-white/[0.02] rounded-[2rem] border border-white/10 transition-all duration-700 hover:border-primary/30 hover:bg-white/[0.04] group overflow-hidden cursor-pointer"
+        >
             {/* Project Image Background */}
             {featuredProject.image && (
               <img 

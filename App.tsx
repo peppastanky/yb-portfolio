@@ -30,10 +30,11 @@ const Home: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate }) 
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('home');
+  const [lenis, setLenis] = useState<Lenis | null>(null);
 
   // Initialize Lenis smooth scroll
   useEffect(() => {
-    const lenis = new Lenis({
+    const lenisInstance = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
@@ -45,26 +46,35 @@ const App: React.FC = () => {
       infinite: false,
     });
 
+    setLenis(lenisInstance);
+
     function raf(time: number) {
-      lenis.raf(time);
+      lenisInstance.raf(time);
       requestAnimationFrame(raf);
     }
 
     requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy();
+      lenisInstance.destroy();
     };
   }, []);
 
+  // Scroll to top when page changes
+  useEffect(() => {
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [currentPage, lenis]);
+
   // Scrolls to top and changes the "page"
   const handleNavigate = (page: string) => {
-    window.scrollTo(0, 0);
     setCurrentPage(page);
   };
   
   const handleNavigateBack = () => {
-    window.scrollTo(0, 0);
     setCurrentPage('home');
   }
 

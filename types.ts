@@ -9,6 +9,7 @@ export interface Project {
   contributions?: string[];
   image?: string;
   video?: string;
+  githubRepo?: string;
   techStack?: {
     frontend?: string[];
     backend?: string[];

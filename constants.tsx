@@ -41,7 +41,8 @@ export const PROJECTS: Project[] = [
     },
     image: '/eventurer-preview.jpg',
     link: '#',
-    video: 'https://www.youtube.com/embed/m4lyZS70TMc'
+    video: 'https://www.youtube.com/embed/m4lyZS70TMc',
+    githubRepo: 'https://github.com/amandaseah/Eventurer'
   }
 ];
 
