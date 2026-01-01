@@ -47,18 +47,20 @@ const About: React.FC = () => {
     active: {
       scale: 1,
       opacity: 1,
+      y: 0,
       filter: 'blur(0px)',
     },
     inactive: {
-      scale: 0.9,
-      opacity: 0.5,
+      scale: 0.85,
+      opacity: 0.3,
+      y: -10,
       filter: 'blur(2px)',
     }
   };
 
   const subtitleVariants: Variants = {
     active: { opacity: 1, color: '#CA79FC' },
-    inactive: { opacity: 1, color: '#6B7280' }
+    inactive: { opacity: 0.5, color: '#6B7280' }
   };
 
   const containerVars: Variants = {
@@ -74,12 +76,12 @@ const About: React.FC = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
+      transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }
     }
   };
 
   return (
-    <section id="about" className="pb-60 pt-20 border-t border-white/5 scroll-mt-32">
+    <section id="about" className="pb-32 pt-20 border-t border-white/5 scroll-mt-32">
       <motion.div 
         variants={containerVars}
         initial="hidden"
@@ -145,7 +147,7 @@ const About: React.FC = () => {
               variants={revealVars}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: false, amount: 0.8 }}
               className="text-[10px] font-bold uppercase tracking-[1em] text-primary/60"
             >
               My Defaults

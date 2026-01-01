@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
       additional: ['Three.js', 'Blender']
     },
     image: '/eventurer-preview.jpg',
-    link: '#',
+    link: 'https://limyubing.eventurer.vercel.app',
     video: 'https://www.youtube.com/embed/m4lyZS70TMc',
     githubRepo: 'https://github.com/amandaseah/Eventurer'
   }

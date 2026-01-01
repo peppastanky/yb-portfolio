@@ -6,7 +6,7 @@ const CursorGlow: React.FC = () => {
   const mouseX = useMotionValue(-500);
   const mouseY = useMotionValue(-500);
 
-  const springConfig = { damping: 40, stiffness: 80, mass: 1 };
+  const springConfig = { damping: 50, stiffness: 300, mass: 0.5 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
@@ -27,18 +27,12 @@ const CursorGlow: React.FC = () => {
         top: smoothY,
         translateX: '-50%',
         translateY: '-50%',
+        background: 'radial-gradient(circle, rgba(173, 89, 235, 0.3) 0%, transparent 70%)',
       }}
-      className="fixed pointer-events-none z-[60] w-[1000px] h-[1000px] rounded-full opacity-70 mix-blend-screen"
-    >
-      <div 
-        className="w-full h-full rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(202, 121, 252, 0.3) 0%, rgba(202, 121, 252, 0.1) 25%, transparent 65%)',
-          filter: 'blur(35px)',
-        }}
-      />
-    </motion.div>
+      className="fixed pointer-events-none z-[60] w-[600px] h-[600px] rounded-full mix-blend-screen"
+    />
   );
 };
 
 export default CursorGlow;
+

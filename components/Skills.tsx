@@ -2,7 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SKILLS } from '../constants';
-import Magnetic from './Magnetic';
 
 const Skills: React.FC = () => {
   return (
@@ -48,28 +47,27 @@ const Skills: React.FC = () => {
             </motion.h4>
             <div className="flex flex-wrap gap-3 md:gap-4">
               {group.items.map((skill, sIdx) => (
-                <Magnetic key={skill} strength={0.2}>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                    viewport={{ once: false, amount: "all" }}
-                    transition={{ 
-                      duration: 0.4, 
-                      delay: sIdx * 0.03,
-                      ease: [0.16, 1, 0.3, 1] 
-                    }}
-                    whileHover={{ 
-                      backgroundColor: "rgba(202, 121, 252, 0.1)",
-                      borderColor: "rgba(202, 121, 252, 0.4)",
-                      y: -2,
-                      scale: 1.05
-                    }}
-                    className="px-6 py-3 rounded-full border border-white/5 glass text-sm font-medium tracking-tight text-white/60 hover:text-primary transition-all duration-500 cursor-default select-none"
-                  >
-                    {skill}
-                  </motion.div>
-                </Magnetic>
-              ))}
+                                  <motion.div
+                                    key={skill}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ 
+                                      duration: 0.5, 
+                                      delay: sIdx * 0.05,
+                                      ease: [0.16, 1, 0.3, 1] 
+                                    }}
+                                    whileHover={{ 
+                                      scale: 1.05,
+                                      y: -4,
+                                      borderColor: 'rgba(202, 121, 252, 0.3)',
+                                      transition: { duration: 0.2 }
+                                    }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="px-6 py-3 rounded-full border border-white/5 glass text-sm font-medium tracking-tight text-white/60 hover:text-primary transition-colors duration-300 cursor-pointer select-none"
+                                  >
+                                    {skill}
+                                  </motion.div>              ))}
             </div>
           </div>
         ))}

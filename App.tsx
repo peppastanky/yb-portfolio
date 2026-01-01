@@ -8,6 +8,7 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
+import { LenisContext } from './components/LenisContext';
 import ProjectDetail from './components/ProjectDetail';
 
 // Home component for the main page layout
@@ -60,6 +61,23 @@ const App: React.FC = () => {
     };
   }, []);
 
+  // Routing effect
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const path = window.location.pathname;
+      if (path.startsWith('/project/')) {
+        const projectId = path.split('/')[2];
+        setCurrentPage(`project:${projectId}`);
+      } else {
+        setCurrentPage('home');
+      }
+    };
+
+    handleLocationChange(); // Initial check
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
   // Scroll to top when page changes
   useEffect(() => {
     if (lenis) {
@@ -71,10 +89,13 @@ const App: React.FC = () => {
 
   // Scrolls to top and changes the "page"
   const handleNavigate = (page: string) => {
+    const projectId = page.split(':')[1];
+    window.history.pushState(null, '', `/project/${projectId}`);
     setCurrentPage(page);
   };
   
   const handleNavigateBack = () => {
+    window.history.pushState(null, '', '/');
     setCurrentPage('home');
   }
 
@@ -82,19 +103,21 @@ const App: React.FC = () => {
   const projectId = currentPage.startsWith('project:') ? currentPage.split(':')[1] : null;
 
   return (
-    <Layout>
-      <AnimatePresence mode="wait">
-        {projectId ? (
-          <ProjectDetail 
-            key="project"
-            projectId={projectId} 
-            onNavigateBack={handleNavigateBack} 
-          />
-        ) : (
-          <Home onNavigate={handleNavigate} />
-        )}
-      </AnimatePresence>
-    </Layout>
+    <LenisContext.Provider value={lenis}>
+      <Layout>
+        <AnimatePresence mode="wait">
+          {projectId ? (
+            <ProjectDetail 
+              key="project"
+              projectId={projectId} 
+              onNavigateBack={handleNavigateBack} 
+            />
+          ) : (
+            <Home onNavigate={handleNavigate} />
+          )}
+        </AnimatePresence>
+      </Layout>
+    </LenisContext.Provider>
   );
 };
 

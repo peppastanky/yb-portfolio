@@ -64,11 +64,11 @@ const EducationItem = ({ item, idx }: { item: ExperienceItem, idx: number }) => 
   };
 
   const textVariants: Variants = {
-    hidden: { y: 25, opacity: 0 },
+    hidden: { y: 50, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+      transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] }
     }
   };
 
@@ -105,9 +105,9 @@ const Experience: React.FC = () => {
   const eduExp = EXPERIENCE.filter(e => e.type === 'education');
 
   return (
-    <section id="experience" className="py-60 border-t border-white/5 scroll-mt-32">
+    <section id="experience" className="py-32 border-t border-white/5 scroll-mt-32">
       {/* WORK EXPERIENCE SECTION */}
-      <div className="max-w-4xl mx-auto mb-80">
+      <div className="max-w-4xl mx-auto mb-40">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -125,7 +125,7 @@ const Experience: React.FC = () => {
       </div>
 
       {/* EDUCATION SECTION */}
-      <div className="mt-60 pt-40 border-t border-white/5">
+      <div className="mt-0 pt-20 border-t border-white/5">
         <motion.div 
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}

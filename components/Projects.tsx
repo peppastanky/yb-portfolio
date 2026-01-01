@@ -47,6 +47,7 @@ const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
               <img 
                 src={featuredProject.image} 
                 alt={featuredProject.title}
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700"
               />
             )}

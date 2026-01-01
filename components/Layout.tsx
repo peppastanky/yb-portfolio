@@ -1,8 +1,9 @@
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import CursorGlow from './CursorGlow';
+import React, { useState, useEffect, useContext, useRef } from 'react';
+import { motion } from 'framer-motion';
 import Magnetic from './Magnetic';
+import { LenisContext } from './LenisContext';
+import CursorGlow from './CursorGlow';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,22 +11,32 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [scrolled, setScrolled] = useState(false);
+  const lenis = useContext(LenisContext);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (!lenis) return;
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    } else if (id === 'top') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    const handleScroll = ({ scroll }: { scroll: number }) => {
+      setScrolled(scroll > 50);
+    };
+
+    lenis.on('scroll', handleScroll);
+
+    return () => {
+      lenis.off('scroll', handleScroll);
+    };
+  }, [lenis]);
+
+  const scrollToSection = (id: string) => {
+    if (id === 'top') {
+      lenis?.scrollTo(0);
+    } else {
+      const element = document.getElementById(id);
+      const navHeight = navRef.current?.getBoundingClientRect().height || 0;
+      if (element) {
+        lenis?.scrollTo(element, { offset: -navHeight - 16 });
+      }
     }
   };
 
@@ -33,7 +44,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="min-h-screen font-sans selection:bg-primary selection:text-black bg-background text-white overflow-x-hidden relative">
       <CursorGlow />
       
-      <motion.nav 
+      <motion.nav
+        ref={navRef}
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -45,24 +57,24 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         <div className="text-lg font-bold tracking-tighter">
           <Magnetic strength={0.3}>
-            <a href="#" onClick={(e) => scrollToSection(e, 'top')} className="hover:text-primary transition-colors block px-4 py-2">YB</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection('top'); }} className="hover:text-primary transition-colors block px-4 py-2">YB</a>
           </Magnetic>
         </div>
         <div className="flex space-x-1 md:space-x-2 text-[9px] font-bold uppercase tracking-[0.4em] text-white/40 items-center">
           <Magnetic strength={0.2}>
-            <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="hover:text-primary transition-colors duration-500 block px-4 py-2">01 Identity</a>
+            <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="hover:text-primary transition-colors duration-500 block px-4 py-2">01 Identity</a>
           </Magnetic>
           <Magnetic strength={0.2}>
-            <a href="#experience" onClick={(e) => scrollToSection(e, 'experience')} className="hover:text-primary transition-colors duration-500 block px-4 py-2">02 Journey</a>
+            <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('experience'); }} className="hover:text-primary transition-colors duration-500 block px-4 py-2">02 Journey</a>
           </Magnetic>
           <Magnetic strength={0.2}>
-            <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="hover:text-primary transition-colors duration-500 block px-4 py-2">03 Builds</a>
+            <a href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }} className="hover:text-primary transition-colors duration-500 block px-4 py-2">03 Builds</a>
           </Magnetic>
           <Magnetic strength={0.2}>
-            <a href="#skills" onClick={(e) => scrollToSection(e, 'skills')} className="hover:text-primary transition-colors duration-500 block px-4 py-2">04 Toolkit</a>
+            <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }} className="hover:text-primary transition-colors duration-500 block px-4 py-2">04 Toolkit</a>
           </Magnetic>
           <Magnetic strength={0.2}>
-            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="hover:text-primary transition-colors duration-500 block px-4 py-2 ml-4">Contact</a>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="hover:text-primary transition-colors duration-500 block px-4 py-2 ml-4">Contact</a>
           </Magnetic>
         </div>
       </motion.nav>
