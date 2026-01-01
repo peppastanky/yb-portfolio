@@ -32,6 +32,7 @@ const Home: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate }) 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [lenis, setLenis] = useState<Lenis | null>(null);
+  const [savedScrollPosition, setSavedScrollPosition] = useState(0);
 
   // Initialize Lenis smooth scroll
   useEffect(() => {
@@ -78,17 +79,31 @@ const App: React.FC = () => {
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
-  // Scroll to top when page changes
+  // Scroll to top when navigating to project, restore position when going back
   useEffect(() => {
-    if (lenis) {
-      lenis.scrollTo(0, { immediate: true });
-    } else {
-      window.scrollTo(0, 0);
+    if (currentPage.startsWith('project:')) {
+      // Going to project detail - scroll to top
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    } else if (currentPage === 'home' && savedScrollPosition > 0) {
+      // Returning to home - restore saved position
+      if (lenis) {
+        lenis.scrollTo(savedScrollPosition, { immediate: true });
+      } else {
+        window.scrollTo(0, savedScrollPosition);
+      }
     }
-  }, [currentPage, lenis]);
+  }, [currentPage, lenis, savedScrollPosition]);
 
   // Scrolls to top and changes the "page"
   const handleNavigate = (page: string) => {
+    // Save current scroll position before navigating
+    const currentScroll = lenis?.scroll || window.scrollY;
+    setSavedScrollPosition(currentScroll);
+    
     const projectId = page.split(':')[1];
     window.history.pushState(null, '', `/project/${projectId}`);
     setCurrentPage(page);

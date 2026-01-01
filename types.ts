@@ -36,4 +36,14 @@ export interface ExperienceItem {
   period: string;
   type: 'education' | 'work';
   description?: string[];
+  details?: {
+    leadership?: string[];
+    coursework?: {
+      exemplary?: string[];
+      relevant?: string[];
+    };
+    achievements?: string[];
+    communityService?: string[];
+    score?: string;
+  };
 }

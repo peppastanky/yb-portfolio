@@ -21,7 +21,7 @@ export const PROJECTS: Project[] = [
     id: 'eventurer',
     title: 'Eventurer',
     subheadline: 'A student-built web app for discovering events and forming teams.',
-    description: "Eventurer helps students find events and connect with others based on shared interests and availability. I focused on the frontend—building user-facing interfaces, designing interaction flows, and integrating client-side APIs to make the experience feel clear and responsive.",
+    description: "Eventurer helps students find events and connect with others based on shared interests and availability. I focused on the frontend—building user-facing interfaces, designing interaction flows, and integrating client-side APIs to make the experience feel clear and responsive. This project was developed as part of SMU's Web Application Development II course, where it earned an A grade.",
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Three.js', 'Blender', 'Google Maps API', 'Gemini API', 'UX Design'],
     contributions: [
       'Built user-facing interfaces with React and TypeScript, focusing on component structure and smooth user flows.',
@@ -29,7 +29,8 @@ export const PROJECTS: Project[] = [
       'Integrated Google Maps API to add a "How to get there" feature, giving users location and navigation context.',
       'Built an FAQ chatbot using Gemini API to reduce friction and provide quick, contextual help.',
       'Designed event discovery flows with Framer Motion, refining interaction details like hover states and transitions to guide attention.',
-      'Worked closely with teammates who handled backend (Firebase, Express.js) and integrations (Stripe, Eventbrite), connecting frontend features to their systems.'
+      'Worked closely with teammates who handled backend (Firebase, Express.js) and integrations (Stripe, Eventbrite), connecting frontend features to their systems.',
+      'Developed as part of SMU Web Application Development II course project (Grade: A-)'
     ],
     techStack: {
       frontend: ['TypeScript', 'React', 'Tailwind CSS', 'Framer Motion'],
@@ -100,18 +101,66 @@ export const EXPERIENCE: ExperienceItem[] = [
     institution: 'Singapore Management University',
     degree: 'Bachelor of Science (Information Systems)',
     period: '2024 - Present',
-    type: 'education'
+    type: 'education',
+    details: {
+      leadership: [
+        'Marketing Executive - SMU Product Club AY25/26',
+        'Programmes Executive - SMU Sports Fiesta 2025',
+        'Marketing Executive - SMU Sports Appreciation Night 2025',
+        'Facilitator - SMU Freshmen Orientation 2025'
+      ],
+      coursework: {
+        exemplary: [
+          'Computational Thinking and Fundamentals (A-)',
+          'Web Application Development II (A-)',
+          'Introduction to Statistics (A-)'
+        ],
+        relevant: [
+          'Web Application Development I',
+          'Data Management',
+          'Interaction Design and Prototyping',
+          'Business Process Analysis & Solutioning',
+          'Introduction to Computing Fundamentals',
+          'Modelling and Data Analytics'
+        ]
+      }
+    }
   },
   {
     institution: 'Nanyang Junior College',
     degree: 'GCE A-Levels',
     period: '2022 - 2023',
-    type: 'education'
+    type: 'education',
+    details: {
+      score: '85/90 RP',
+      leadership: [
+        'NYJC Basketball EXCO AY22/23',
+        'Facilitator - Civics Tutorial Orientation 2023'
+      ],
+      achievements: [
+        'Studied H2 Math, Chemistry, Biology and H1 Economics'
+      ],
+      communityService: [
+        'House Decluttering For Elderly @Fei Yue Community Services (2022 & 2023)',
+        'Braddell Heights Family Fair Event Crew (2023)',
+        'Project Aster Partnering With SCS - Student Volunteer (2023)'
+      ]
+    }
   },
   {
     institution: 'Chung Cheng High School (Main)',
     degree: 'GCE O-Levels',
     period: '2018 - 2021',
-    type: 'education'
+    type: 'education',
+    details: {
+      score: 'Net score of 9',
+      leadership: [
+        'Netball Committee Member'
+      ],
+      achievements: [
+        'Represented School in NSG Netball Championships C Division 2019',
+        'Represented School in NSG Netball Championships B Division East Zone 2020-2021'
+      ]
+    }
   }
 ];

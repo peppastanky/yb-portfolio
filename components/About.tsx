@@ -136,8 +136,25 @@ const About: React.FC = () => {
               </motion.div>
               <motion.div variants={revealVars} className="h-px w-20 bg-primary/40"></motion.div>
               <motion.p variants={revealVars} className="text-xl text-muted leading-relaxed max-w-xl">
-                These days, I’m usually building things with React and TypeScript. I enjoy the back-and-forth of building, breaking, fixing, and refining until things start to feel right.
+                These days, I'm usually building things with React and TypeScript. I enjoy the back-and-forth of building, breaking, fixing, and refining until things start to feel right.
               </motion.p>
+              <motion.div 
+                variants={revealVars}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false }}
+                className="pt-4"
+              >
+                <a 
+                  href="/resume.pdf" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-primary/30 bg-primary/5 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 text-sm font-medium text-primary/90 hover:text-primary group"
+                >
+                  <span>View Resume</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </motion.div>
            </div>
         </div>
 
