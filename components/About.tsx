@@ -158,7 +158,7 @@ const About: React.FC = () => {
            </div>
         </div>
 
-        <div>
+        <div className="relative">
           <div className="overflow-hidden mb-12">
             <motion.h2 
               variants={revealVars}
@@ -170,7 +170,36 @@ const About: React.FC = () => {
               My Defaults
             </motion.h2>
           </div>
-          <div className="relative">
+          
+          {/* Decorative background elements */}
+          <div className="absolute inset-0 -z-10 overflow-hidden">
+            <motion.div 
+              animate={{ 
+                scale: [1, 1.2, 1],
+                rotate: [0, 180, 360],
+              }}
+              transition={{ 
+                duration: 20, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+              className="absolute top-1/4 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"
+            ></motion.div>
+            <motion.div 
+              animate={{ 
+                scale: [1.2, 1, 1.2],
+                rotate: [360, 180, 0],
+              }}
+              transition={{ 
+                duration: 15, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+              className="absolute bottom-1/4 -left-20 w-48 h-48 bg-primary/3 rounded-full blur-3xl"
+            ></motion.div>
+          </div>
+          
+          <div className="relative backdrop-blur-sm bg-white/[0.01] rounded-3xl border border-white/5 p-8 md:p-12">
             <div 
               ref={scrollContainerRef}
               data-lenis-prevent
@@ -180,17 +209,24 @@ const About: React.FC = () => {
                 WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
               }}
             >
-              <div className="h-[140px]"></div>
+              <div className="h-[100px]"></div>
               {MY_DEFAULTS.map((item, idx) => (
                 <div
                   key={idx}
-                  className="default-item h-[120px] snap-center flex flex-col items-center justify-center text-center"
+                  className="default-item relative h-[200px] snap-center flex flex-col items-center justify-center text-center px-8"
                 >
+                  <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-0 transition-opacity duration-500"
+                       style={{ opacity: activeIndex === idx ? 0.2 : 0 }}
+                  ></div>
                   <motion.h3 
                     variants={textVariants}
                     animate={activeIndex === idx ? 'active' : 'inactive'}
                     transition={{ duration: 0.3, ease: 'easeOut' }}
                     className="text-4xl md:text-6xl font-bold tracking-tight text-white"
+                    style={{
+                      filter: activeIndex === idx ? 'blur(0px)' : 'blur(3px)',
+                      opacity: activeIndex === idx ? 1 : 0.3
+                    }}
                   >
                     {item.label}
                   </motion.h3>
@@ -198,16 +234,35 @@ const About: React.FC = () => {
                     variants={subtitleVariants}
                     animate={activeIndex === idx ? 'active' : 'inactive'}
                     transition={{ duration: 0.3, ease: 'easeOut' }}
-                    className="mt-1 text-lg italic font-serif text-primary"
+                    className="mt-1 text-lg italic font-serif text-primary max-w-2xl"
+                    style={{
+                      filter: activeIndex === idx ? 'blur(0px)' : 'blur(2px)',
+                      opacity: activeIndex === idx ? 1 : 0.2
+                    }}
                   >
                     {item.value}
                   </motion.p>
                 </div>
               ))}
-              <div className="h-[140px]"></div>
+              <div className="h-[100px]"></div>
             </div>
-            <div className="absolute inset-y-1/2 left-0 w-full h-[120px] -translate-y-1/2 pointer-events-none">
-              <div className="w-full h-full border-y border-white/10"></div>
+            
+            {/* Enhanced focus indicator */}
+            <div className="absolute inset-y-1/2 left-0 w-full h-[200px] -translate-y-1/2 pointer-events-none">
+              <div className="w-full h-full border-y border-primary/30 bg-gradient-to-r from-transparent via-primary/10 to-transparent shadow-[0_0_40px_rgba(202,121,252,0.15)]"></div>
+            </div>
+            
+            {/* Scroll hint */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+              <p className="text-xs uppercase tracking-wider text-white/40">Scroll to explore</p>
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <svg className="w-4 h-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </motion.div>
             </div>
           </div>
         </div>
