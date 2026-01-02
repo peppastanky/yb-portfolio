@@ -67,7 +67,7 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <div ref={containerRef} className="h-[110vh] relative -mx-6 md:-mx-12">
+    <div ref={containerRef} className="h-[110vh] relative -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12 overflow-hidden">
       <motion.section 
         variants={containerVars}
         initial="hidden"
@@ -75,8 +75,8 @@ const Hero: React.FC = () => {
         style={{ opacity, scale, filter: blur }}
         className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden"
       >
-        <div className="relative z-10 w-full flex flex-col items-center px-4">
-          <div className="flex flex-row items-center justify-center font-bold leading-none tracking-[-0.08em] select-none text-white whitespace-nowrap w-full">
+        <div className="relative z-10 w-full flex flex-col items-center px-4 overflow-hidden">
+          <div className="flex flex-row items-center justify-center font-bold leading-none tracking-[-0.08em] select-none text-white whitespace-nowrap w-full overflow-hidden">
             <motion.div style={{ x: yuX }} className="flex">
               {nameYu.map((char, i) => (
                 <motion.span
@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
                     textShadow: "0 0 30px rgba(202, 121, 252, 0.6)",
                     transition: { type: "spring", stiffness: 400, damping: 10 }
                   }}
-                  className="text-[22vw] md:text-[18vw] block will-change-transform cursor-default transition-colors duration-300"
+                  className="text-[18vw] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] block will-change-transform cursor-default transition-colors duration-300"
                 >
                   {char}
                 </motion.span>
@@ -97,7 +97,7 @@ const Hero: React.FC = () => {
             </motion.div>
             
             <motion.div style={{ x: bingX }} className="flex">
-              <span className="text-[22vw] md:text-[18vw] block">&nbsp;</span>
+              <span className="text-[18vw] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] block">&nbsp;</span>
               {nameBing.map((char, i) => (
                 <motion.span
                   key={i}
@@ -109,12 +109,12 @@ const Hero: React.FC = () => {
                     textShadow: "0 0 30px rgba(202, 121, 252, 0.6)",
                     transition: { type: "spring", stiffness: 400, damping: 10 }
                   }}
-                  className={`text-[22vw] md:text-[18vw] block will-change-transform cursor-default transition-colors duration-300`}
+                  className="text-[18vw] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] block will-change-transform cursor-default transition-colors duration-300"
                 >
                   {char}
                 </motion.span>
               ))}
-              <motion.span variants={letterVars} className="text-[22vw] md:text-[18vw] text-primary block">.</motion.span>
+              <motion.span variants={letterVars} className="text-[18vw] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] text-primary block">.</motion.span>
             </motion.div>
           </div>
           

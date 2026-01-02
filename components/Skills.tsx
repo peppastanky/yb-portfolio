@@ -35,14 +35,14 @@ const Skills: React.FC = () => {
             viewport={{ once: false }}
             className="h-px bg-primary/40"
           ></motion.div>
-          <h2 className="text-[10px] font-bold uppercase tracking-[1em] text-primary">04 — TOOLKIT</h2>
+          <h2 className="text-[10px] font-bold uppercase tracking-[1em] text-primary">04 — SKILLS</h2>
         </motion.div>
         <motion.h3 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-6xl md:text-[7rem] font-bold tracking-tighter leading-none"
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold tracking-tighter leading-none"
         >
           Fluent in<br/>
           <span className="italic font-serif font-medium text-muted/20">The Stack.</span>

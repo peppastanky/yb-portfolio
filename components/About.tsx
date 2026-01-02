@@ -89,20 +89,20 @@ const About: React.FC = () => {
         viewport={{ once: false, amount: 0.1 }}
         className="relative"
       >
-        <div className="mb-40">
+        <div className="mb-20 sm:mb-28 md:mb-40">
            <div className="overflow-hidden mb-4">
               <motion.h2 variants={revealVars} className="text-[10px] font-bold uppercase tracking-[1em] text-primary/60">
-                01 — ABOUT
+                01 — ABOUT ME
               </motion.h2>
            </div>
            <div className="flex flex-col md:flex-row items-baseline gap-x-8">
               <div className="overflow-hidden">
-                <motion.h1 variants={revealVars} className="text-7xl md:text-[10rem] font-bold tracking-tighter leading-[0.85] text-white">
+                <motion.h1 variants={revealVars} className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] font-bold tracking-tighter leading-[0.85] text-white">
                   BUILD<span className="text-primary">.</span>
                 </motion.h1>
               </div>
               <div className="overflow-hidden">
-                <motion.h1 variants={revealVars} className="text-7xl md:text-[10rem] font-bold tracking-tighter leading-[0.85] text-muted/10 italic font-serif">
+                <motion.h1 variants={revealVars} className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] font-bold tracking-tighter leading-[0.85] text-muted/10 italic font-serif">
                   Iterate
                 </motion.h1>
               </div>
@@ -127,8 +127,8 @@ const About: React.FC = () => {
            </div>
            <div className="lg:col-span-7 flex flex-col justify-center space-y-12">
               <motion.div variants={revealVars}>
-                <p className="text-4xl md:text-6xl tracking-tighter text-white/95 leading-none font-light">
-                  Hi, I’m <span className="font-serif italic font-normal">Yu Bing</span>.
+                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter text-white/95 leading-none font-light">
+                  Hi, I'm <span className="font-serif italic font-normal">Yu Bing</span>.
                 </p>
                 <p className="mt-4 text-base text-primary tracking-widest uppercase">
                   Information Systems Student

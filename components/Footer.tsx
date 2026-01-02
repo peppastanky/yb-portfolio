@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl md:text-7xl font-bold mb-16 tracking-tighter"
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold mb-8 sm:mb-12 md:mb-16 tracking-tighter"
         >
           Let's build something <br />
           <span className="text-primary italic font-medium">meaningful</span> together.

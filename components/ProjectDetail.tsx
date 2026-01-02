@@ -131,7 +131,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onNavigateBack
 
           {project.techStack && (
             <div className="mt-16">
-              <h3 className="text-2xl font-bold tracking-tight mb-8">Tech Stack</h3>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-8">Tech Stack</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {project.techStack.frontend && (
                   <div>
@@ -211,7 +211,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onNavigateBack
 
           {project.contributions && (
             <div className="mt-16">
-              <h3 className="text-2xl font-bold tracking-tight mb-6">My Role & Contributions</h3>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6">My Role & Contributions</h3>
               <ul className="space-y-4">
                 {project.contributions.map((point, idx) => (
                   <li key={idx} className="flex items-start gap-4">
