@@ -30,7 +30,7 @@ const WorkExperienceItem = ({ item }: { item: ExperienceItem }) => {
       </div>
       <div className="flex flex-col space-y-4">
         <div className="flex items-center space-x-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60">{item.period}</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 ml-2 sm:ml-4">{item.period}</span>
           <motion.div 
             style={{ scaleX: lineScaleX, originX: 0 }}
             className="h-px flex-grow bg-white/5"
@@ -97,7 +97,7 @@ const EducationItem = ({ item, idx }: { item: ExperienceItem, idx: number }) => 
         
         {/* Main content - always visible */}
         <div className="relative z-10 flex-grow">
-          <motion.div variants={textVariants} className="flex items-center space-x-4 mb-12">
+          <motion.div variants={textVariants} className="flex items-center space-x-4 mb-12 pl-2 sm:pl-4">
             <div className="w-2 h-2 rounded-full bg-primary/40 group-hover:bg-primary transition-all duration-700 shadow-[0_0_10px_rgba(202,121,252,0.5)]"></div>
             <p className="text-[11px] font-bold uppercase tracking-[0.5em] text-white/40 group-hover:text-primary transition-colors duration-700">{item.period}</p>
           </motion.div>
