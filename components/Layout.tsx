@@ -73,16 +73,28 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             
             <div className="flex items-center gap-1 text-[8px] font-bold uppercase tracking-[0.3em] text-white/50">
               <Magnetic strength={0.2}>
-                <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="hover:text-primary hover:bg-white/5 transition-all duration-300 rounded-full px-3 py-1.5">About Me</a>
+                <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="hover:text-primary transition-all duration-300 rounded-full px-3 py-1.5 relative group">
+                  About
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-primary group-hover:w-3/4 transition-all duration-300"></span>
+                </a>
               </Magnetic>
               <Magnetic strength={0.2}>
-                <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('experience'); }} className="hover:text-primary hover:bg-white/5 transition-all duration-300 rounded-full px-3 py-1.5">Work Experience</a>
+                <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('experience'); }} className="hover:text-primary transition-all duration-300 rounded-full px-3 py-1.5 relative group">
+                  Experience
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-primary group-hover:w-3/4 transition-all duration-300"></span>
+                </a>
               </Magnetic>
               <Magnetic strength={0.2}>
-                <a href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }} className="hover:text-primary hover:bg-white/5 transition-all duration-300 rounded-full px-3 py-1.5">Featured Projects</a>
+                <a href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }} className="hover:text-primary transition-all duration-300 rounded-full px-3 py-1.5 relative group">
+                  Projects
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-primary group-hover:w-3/4 transition-all duration-300"></span>
+                </a>
               </Magnetic>
               <Magnetic strength={0.2}>
-                <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }} className="hover:text-primary hover:bg-white/5 transition-all duration-300 rounded-full px-3 py-1.5">Skills</a>
+                <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }} className="hover:text-primary transition-all duration-300 rounded-full px-3 py-1.5 relative group">
+                  Skills
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-primary group-hover:w-3/4 transition-all duration-300"></span>
+                </a>
               </Magnetic>
               
               {/* Contact Button */}

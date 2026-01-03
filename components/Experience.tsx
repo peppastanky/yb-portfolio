@@ -315,7 +315,7 @@ const Experience: React.FC = () => {
             className="w-px bg-gradient-to-b from-primary/40 to-transparent mb-12"
           ></motion.div>
           <h2 className="text-[10px] font-bold uppercase tracking-[1.5em] text-white/20 mb-10">YU BING's</h2>
-          <h3 className="text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[9rem] font-bold tracking-tighter text-white mb-6">Academic Background<span className="text-primary">.</span></h3>
+          <h3 className="text-6xl sm:text-7xl md:text-7xl lg:text-[5rem] xl:text-[5rem] font-bold tracking-tighter text-white mb-6">Academic Background<span className="text-primary">.</span></h3>
           <p className="text-muted/50 text-xl max-w-2xl mx-auto font-light leading-relaxed">
             A simple overview of my academic experience.
           </p>
