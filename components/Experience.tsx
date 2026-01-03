@@ -30,18 +30,18 @@ const WorkExperienceItem = ({ item }: { item: ExperienceItem }) => {
       </div>
       <div className="flex flex-col space-y-4">
         <div className="flex items-center space-x-4">
-          <span className="sm:text-[12px] md:text-[14px] lg:text-[16px] font-bold uppercase tracking-[0.4em] text-primary/60 ml-2 sm:ml-4">{item.period}</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 ml-2 sm:ml-4">{item.period}</span>
           <motion.div 
             style={{ scaleX: lineScaleX, originX: 0 }}
             className="h-px flex-grow bg-white/5"
           ></motion.div>
         </div>
-        <h4 className="sm:text-3xl md:text-4xl lg:text-4xl font-bold tracking-tighter text-white">{item.institution}</h4>
+        <h4 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold tracking-tighter text-white">{item.institution}</h4>
         <p className="text-xl md:text-2xl italic font-serif text-muted/60">{item.degree}</p>
         {item.description && (
           <ul className="mt-8 space-y-4 max-w-2xl border-l border-white/5 pl-8">
             {item.description.map((point, pIdx) => (
-              <li key={pIdx} className="text-muted/60 sm:text-[15px] md:text-[16px] lg:text-[19px] eading-relaxed">{point}</li>
+              <li key={pIdx} className="text-muted/60 text-[15px] leading-relaxed">{point}</li>
             ))}
           </ul>
         )}
@@ -85,10 +85,10 @@ const EducationItem = ({ item, idx }: { item: ExperienceItem, idx: number }) => 
     >
       <motion.div
         animate={{ 
-          height: isExpanded ? 'auto' : '450px',
+          height: isExpanded ? 'auto' : 'auto',
         }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="relative p-12 glass rounded-[3.5rem] border border-white/5 hover:border-primary/40 transition-colors duration-1000 overflow-hidden flex flex-col"
+        className="relative p-6 sm:p-8 md:p-10 lg:p-12 glass rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] lg:rounded-[3.5rem] border border-white/5 hover:border-primary/40 transition-colors duration-1000 overflow-hidden flex flex-col min-h-[400px] sm:min-h-[420px] md:min-h-[450px]"
       >
         {/* Background watermark */}
         <div className="absolute -right-8 -bottom-4 text-7xl font-bold text-white/[0.01] group-hover:text-primary/[0.03] transition-all duration-1000 rotate-90 origin-bottom-right whitespace-nowrap select-none font-serif italic">
@@ -97,18 +97,18 @@ const EducationItem = ({ item, idx }: { item: ExperienceItem, idx: number }) => 
         
         {/* Main content - always visible */}
         <div className="relative z-10 flex-grow">
-          <motion.div variants={textVariants} className="flex items-center space-x-4 mb-12 pl-2 sm:pl-4">
+          <motion.div variants={textVariants} className="flex items-center space-x-4 mb-6 sm:mb-8 md:mb-10 lg:mb-12 pl-2 sm:pl-4">
             <div className="w-2 h-2 rounded-full bg-primary/40 group-hover:bg-primary transition-all duration-700 shadow-[0_0_10px_rgba(202,121,252,0.5)]"></div>
             <p className="text-[11px] font-bold uppercase tracking-[0.5em] text-white/40 group-hover:text-primary transition-colors duration-700">{item.period}</p>
           </motion.div>
-          <motion.h5 variants={textVariants} className="text-4xl sm:text-5xl md:text-5xl lg:text-3xl font-bold tracking-tighter text-white/90 group-hover:text-white transition-all duration-700 leading-[1.1] mb-8">
+          <motion.h5 variants={textVariants} className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold tracking-tighter text-white/90 group-hover:text-white transition-all duration-700 leading-[1.1] mb-6 sm:mb-7 md:mb-8">
             {item.institution}
           </motion.h5>
         </div>
         
-        <motion.div variants={textVariants} className="relative z-10 space-y-6">
+        <motion.div variants={textVariants} className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 mb-6 sm:mb-7 md:mb-8">
           <div className="h-px w-0 bg-primary/40 group-hover:w-full transition-all duration-1000"></div>
-          <p className="text-xl lg:text-lg text-muted/40 italic font-serif group-hover:text-primary/60 transition-all duration-700">{item.degree}</p>
+          <p className="text-lg sm:text-xl text-muted/40 italic font-serif group-hover:text-primary/60 transition-all duration-700">{item.degree}</p>
         </motion.div>
 
         {/* Expanded details */}
@@ -254,11 +254,11 @@ const EducationItem = ({ item, idx }: { item: ExperienceItem, idx: number }) => 
 
         {/* View Details button at the bottom */}
         {item.details && (
-          <div className="relative z-10 mt-8">
+          <div className="relative z-10 mt-auto pt-4 sm:pt-5 md:pt-6">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 hover:bg-primary/10 transition-all text-xs font-medium text-primary/80 hover:text-primary w-full justify-center"
+              className="flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full border border-primary/30 bg-primary/5 hover:bg-primary/10 transition-all text-xs sm:text-sm font-medium text-primary/80 hover:text-primary w-full justify-center"
             >
               <span>{isExpanded ? 'Show Less' : 'View Details'}</span>
               <motion.span
@@ -280,7 +280,7 @@ const Experience: React.FC = () => {
   const eduExp = EXPERIENCE.filter(e => e.type === 'education');
 
   return (
-    <section id="experience" className="py-32 border-t border-white/5 scroll-mt-32">
+    <section id="experience" className="py-24 border-t border-white/5 scroll-mt-32">
       {/* WORK EXPERIENCE SECTION */}
       <div className="max-w-4xl mx-auto mb-40">
         <motion.div 
@@ -290,7 +290,7 @@ const Experience: React.FC = () => {
           className="mb-16 sm:mb-24 md:mb-32"
         >
           <h2 className="text-[10px] font-bold uppercase tracking-[1em] text-primary mb-8">02 — WORK EXPERIENCE</h2>
-          <h3 className="text-6xl sm:text-7xl md:text-8xl lg:text-[5rem] xl:text-[5rem] font-bold tracking-tighter text-white">Experience<span className="text-primary">.</span></h3>
+          <h3 className="text-6xl sm:text-7xl md:text-7xl lg:text-[5rem] xl:text-[5rem] font-bold tracking-tighter text-white">Experience<span className="text-primary">.</span></h3>
         </motion.div>
         <div className="space-y-40">
           {workExp.map((item, idx) => (
@@ -315,7 +315,7 @@ const Experience: React.FC = () => {
             className="w-px bg-gradient-to-b from-primary/40 to-transparent mb-12"
           ></motion.div>
           <h2 className="text-[10px] font-bold uppercase tracking-[1.5em] text-white/20 mb-10">YU BING's</h2>
-          <h3 className="text-6xl sm:text-7xl md:text-8xl lg:text-[6rem] xl:text-[6rem] font-bold tracking-tighter text-white mb-6">Academic Background<span className="text-primary">.</span></h3>
+          <h3 className="text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[9rem] font-bold tracking-tighter text-white mb-6">Academic Background<span className="text-primary">.</span></h3>
           <p className="text-muted/50 text-xl max-w-2xl mx-auto font-light leading-relaxed">
             A simple overview of my academic experience.
           </p>

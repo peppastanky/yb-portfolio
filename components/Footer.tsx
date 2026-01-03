@@ -5,87 +5,87 @@ import { CONTACT } from '../constants';
 
 const Footer: React.FC = () => {
   return (
-    <footer id="contact" className="py-32 border-t border-white/5 scroll-mt-32">
-      <div className="flex flex-col items-center text-center">
-        <motion.h2 
-          initial={{ opacity: 0.01, y: 30 }}
+    <footer id="contact" className="py-24 border-t border-white/5 scroll-mt-32">
+      <div className="max-w-4xl mx-auto">
+        {/* Main CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-5xl font-bold mb-8 sm:mb-12 md:mb-16 tracking-tighter"
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-16"
         >
-          Let's build something <br />
-          <span className="text-primary italic font-medium">meaningful</span> together.
-        </motion.h2>
-        
-        <div className="flex flex-col items-center space-y-12 mb-20">
-          <div className="flex flex-col items-center space-y-4">
-             <motion.a 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                whileHover={{ y: -5 }}
-                href={`mailto:${CONTACT.primaryEmail}`} 
-                className="sm:text-md md:text-lg lg:text-xl font-medium text-white hover:text-primary transition-all duration-300 decoration-primary/30 underline underline-offset-[12px] decoration-[1px]"
-              >
-                {CONTACT.primaryEmail}
-              </motion.a>
-              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-10 pt-4">
-                  <motion.a 
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: false }}
-                    transition={{ delay: 0.1 }}
-                    href={`tel:${CONTACT.phoneValue}`}
-                    whileHover={{ color: '#CA79FC' }}
-                    className="text-muted/60 hover:text-primary transition-colors text-md tracking-tight"
-                  >
-                    {CONTACT.phone}
-                  </motion.a>
-                  <div className="hidden md:block w-1.5 h-1.5 rounded-full bg-white/5"></div>
-                  <motion.a 
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: false }}
-                    transition={{ delay: 0.2 }}
-                    href={`mailto:${CONTACT.secondaryEmail}`}
-                    whileHover={{ color: '#CA79FC' }}
-                    className="text-muted/60 hover:text-primary transition-colors text-md tracking-tight"
-                  >
-                    {CONTACT.secondaryEmail}
-                  </motion.a>
-              </div>
-          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">
+            Let's build something<br />
+            <span className="text-primary italic font-medium">meaningful</span> together.
+          </h2>
+        </motion.div>
 
-          <div className="flex space-x-10">
-            {[
-              { name: 'LinkedIn', url: CONTACT.linkedin },
-              { name: 'GitHub', url: CONTACT.github }
-            ].map((social, i) => (
-              <motion.a 
-                key={social.name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: false }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ scale: 1.1, color: '#CA79FC' }}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted uppercase tracking-[0.3em] text-[10px] font-bold transition-all"
-              >
-                {social.name}
-              </motion.a>
-            ))}
-          </div>
-        </div>
-        
-        <div className="w-full flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.4em] text-muted space-y-6 md:space-y-0 opacity-40 hover:opacity-100 transition-opacity duration-700">
-          <div>© 2025 Yu Bing • Information Systems Student</div>
-          <div className="flex space-x-3 items-center">
+        {/* Contact Card */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mb-20"
+        >
+          <div className="relative p-8 sm:p-10 md:p-12 rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-sm hover:border-primary/30 transition-all duration-500 group">
+            {/* Decorative gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
             
+            {/* Content */}
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+              {/* Email */}
+              <div className="flex-1">
+                <p className="text-[10px] uppercase tracking-[0.3em] text-primary/60 font-bold mb-3">Email</p>
+                <motion.a
+                  href={`mailto:${CONTACT.primaryEmail}`}
+                  whileHover={{ x: 5 }}
+                  className="text-lg sm:text-xl font-medium text-white/90 hover:text-primary transition-colors duration-300 block"
+                >
+                  {CONTACT.primaryEmail}
+                </motion.a>
+              </div>
+
+              {/* Divider */}
+              <div className="hidden md:block w-px h-16 bg-white/10"></div>
+
+              {/* Social Links */}
+              <div className="flex-1">
+                <p className="text-[10px] uppercase tracking-[0.3em] text-primary/60 font-bold mb-4">Connect</p>
+                <div className="flex gap-4">
+                  {[
+                    { name: 'LinkedIn', url: CONTACT.linkedin },
+                    { name: 'GitHub', url: CONTACT.github }
+                  ].map((social) => (
+                    <motion.a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -3 }}
+                      className="text-sm px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:border-primary/40 hover:bg-primary/5 text-white/70 hover:text-primary transition-all duration-300"
+                    >
+                      {social.name}
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </motion.div>
+
+        {/* Footer Bottom */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{ delay: 0.3 }}
+          className="flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.3em] text-white/30"
+        >
+          <p>© 2025 Yu Bing</p>
+          <p className="text-white/20">Information Systems Student</p>
+        </motion.div>
       </div>
     </footer>
   );

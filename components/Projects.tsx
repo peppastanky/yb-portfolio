@@ -26,7 +26,7 @@ const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
   }
 
   return (
-    <section id="projects" className="py-60 border-t border-white/5 scroll-mt-32">
+    <section id="projects" className="py-32 border-t border-white/5 scroll-mt-32">
       {/* Section Header */}
       <div className="mb-20 sm:mb-28 md:mb-40 flex flex-col items-start text-left">
         <motion.div

@@ -92,7 +92,7 @@ const About: React.FC = () => {
         viewport={{ once: false, amount: 0.1 }}
         className="relative"
       >
-        <div className="mb-20 sm:mb-28 md:mb-40">
+        <div className="mb-12 sm:mb-16 md:mb-20">
            <div className="overflow-hidden mb-4">
               <motion.h2 variants={revealVars} className="text-[10px] font-bold uppercase tracking-[1em] text-primary/60">
                 01 — ABOUT ME
@@ -100,12 +100,12 @@ const About: React.FC = () => {
            </div>
            <div className="flex flex-col md:flex-row items-baseline gap-x-8">
               <div className="overflow-hidden">
-                <motion.h1 variants={revealVars} className="text-6xl sm:text-8xl md:text-9xl lg:text-[5rem] xl:text-[5rem] font-bold tracking-tighter leading-[0.85] text-white">
+                <motion.h1 variants={revealVars} className="text-6xl sm:text-7xl md:text-7xl lg:text-[5rem] xl:text-[5rem] font-bold tracking-tighter leading-[0.85] text-white">
                   ABOUT<span className="text-primary">.</span>
                 </motion.h1>
               </div>
-              <div className="overflow-hidden">
-                <motion.h1 variants={revealVars} className="text-6xl sm:text-8xl md:text-9xl lg:text-[5rem] xl:text-[5rem] font-bold tracking-tighter leading-[0.85] text-muted/50 italic font-serif">
+              <div className="overflow-visible">
+                <motion.h1 variants={revealVars} className="text-6xl sm:text-7xl md:text-7xl lg:text-[5rem] xl:text-[5rem] font-bold tracking-tighter leading-[0.85] text-muted/50 italic font-serif pr-2">
                   Me
                 </motion.h1>
               </div>

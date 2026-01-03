@@ -5,7 +5,7 @@ import { SKILLS } from '../constants';
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" className="py-60 border-t border-white/5 scroll-mt-32 relative overflow-hidden">
+    <section id="skills" className="py-32 border-t border-white/5 scroll-mt-32 relative overflow-hidden">
       {/* Animated background gradient orbs */}
       <motion.div 
         animate={{ 

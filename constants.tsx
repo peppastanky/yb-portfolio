@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
 ];
 
 export const MY_DEFAULTS: DefaultItem[] = [
-  { label: 'default mode', value: 'i build things to learn how they work / build first refine later' },
+  { label: 'how i work', value: 'building to understand / learning through iteration' },
   { label: 'i care about', value: 'clean ux and thoughtful details' },
   { label: 'i enjoy', value: 'problem solving and making things work' },
   { label: 'currently learning', value: 'React, TypeScript, and modern frontend patterns.' },
