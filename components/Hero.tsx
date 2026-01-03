@@ -126,7 +126,7 @@ const Hero: React.FC = () => {
           >
             <ScrambleText 
               text="Information Systems • Builder"
-              className="text-[10px] md:text-[12px] font-bold text-white uppercase tracking-[1em] mb-12 opacity-80"
+              className="text-[10px] md:text-[12px] font-bold text-white uppercase tracking-[1em] mb-12 opacity-80 text-center "
             />
 
             <div className="flex items-center space-x-8">

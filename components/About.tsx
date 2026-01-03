@@ -30,16 +30,19 @@ const About: React.FC = () => {
         }
       });
       
-      if (closestIndex !== activeIndex) {
-        setActiveIndex(closestIndex);
-      }
+      setActiveIndex(prevIndex => {
+        if (prevIndex !== closestIndex) {
+          return closestIndex;
+        }
+        return prevIndex;
+      });
     };
 
     container.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Set initial state
     
     return () => container.removeEventListener('scroll', handleScroll);
-  }, [activeIndex]);
+  }, []);
 
   // Animation variants for the title and subtitle text.
   // Framer Motion will animate between these states.
@@ -97,13 +100,13 @@ const About: React.FC = () => {
            </div>
            <div className="flex flex-col md:flex-row items-baseline gap-x-8">
               <div className="overflow-hidden">
-                <motion.h1 variants={revealVars} className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] font-bold tracking-tighter leading-[0.85] text-white">
-                  BUILD<span className="text-primary">.</span>
+                <motion.h1 variants={revealVars} className="text-7xl sm:text-8xl md:text-9xl lg:text-[7rem] xl:text-[8rem] font-bold tracking-tighter leading-[0.85] text-white">
+                  ABOUT<span className="text-primary">.</span>
                 </motion.h1>
               </div>
               <div className="overflow-hidden">
-                <motion.h1 variants={revealVars} className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] font-bold tracking-tighter leading-[0.85] text-muted/10 italic font-serif">
-                  Iterate
+                <motion.h1 variants={revealVars} className="text-7xl sm:text-8xl md:text-9xl lg:text-[7rem] xl:text-[8rem] font-bold tracking-tighter leading-[0.85] text-muted/50 italic font-serif">
+                  Me
                 </motion.h1>
               </div>
            </div>
@@ -131,7 +134,7 @@ const About: React.FC = () => {
                   Hi, I'm <span className="font-serif italic font-normal">Yu Bing</span>.
                 </p>
                 <p className="mt-4 text-base text-primary tracking-widest uppercase">
-                  Information Systems Student
+                  Information Systems Student @ SMU
                 </p>
               </motion.div>
               <motion.div variants={revealVars} className="h-px w-20 bg-primary/40"></motion.div>
@@ -159,15 +162,15 @@ const About: React.FC = () => {
         </div>
 
         <div className="relative">
-          <div className="overflow-hidden mb-12">
+          <div className="relative z-10 overflow-hidden mb-12">
             <motion.h2 
               variants={revealVars}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.8 }}
-              className="text-[10px] font-bold uppercase tracking-[1em] text-primary/60"
+              viewport={{ once: false, amount: 0.2 }}
+              className="text-[24px] font-bold uppercase tracking-[1em] text-primary/60 text-center"
             >
-              My Defaults
+              More about me
             </motion.h2>
           </div>
           

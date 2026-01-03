@@ -42,7 +42,7 @@ const Skills: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold tracking-tighter leading-none"
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[9rem] font-bold tracking-tighter leading-none"
         >
           Fluent in<br/>
           <span className="italic font-serif font-medium text-muted/20">The Stack.</span>

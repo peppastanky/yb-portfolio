@@ -36,8 +36,8 @@ const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="text-[10px] font-bold uppercase tracking-[1em] text-primary mb-8">03 — FEATURED PROJECTS</h2>
-          <h3 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold tracking-tighter leading-none mb-4">
-            Featured<br/><span className="italic font-serif font-medium text-muted/10">Build.</span>
+          <h3 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8rem] font-bold tracking-tighter leading-none mb-4">
+            Featured<br/><span className="italic font-serif font-medium text-muted/20">Build.</span>
           </h3>
         </motion.div>
       </div>
@@ -70,10 +70,10 @@ const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
             <div className="absolute inset-0 p-8 sm:p-10 md:p-14 lg:p-20 xl:p-24 flex flex-col justify-between bg-gradient-to-t from-black/90 via-black/60 to-transparent">
               {/* Top: Title & Description */}
               <div className="flex-shrink-0">
-                <h4 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white group-hover:text-primary transition-colors duration-500 leading-tight">
+                <h4 className="text-5xl sm:text-4xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-white group-hover:text-primary transition-colors duration-500 leading-tight">
                   {featuredProject.title}
                 </h4>
-                <p className="mt-4 sm:mt-5 md:mt-6 text-base sm:text-lg md:text-xl text-muted/90 max-w-2xl leading-relaxed line-clamp-3 sm:line-clamp-4 md:line-clamp-none">
+                <p className=" mt-4 sm:mt-5 md:mt-6 text-base sm:text-md md:text-md text-muted/90 max-w-2xl leading-relaxed line-clamp-3 sm:line-clamp-4 md:line-clamp-none">
                   {featuredProject.description}
                 </p>
               </div>
