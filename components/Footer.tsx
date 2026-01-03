@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-5xl font-bold mb-8 sm:mb-12 md:mb-16 tracking-tighter"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-5xl font-bold mb-8 sm:mb-12 md:mb-16 tracking-tighter"
         >
           Let's build something <br />
           <span className="text-primary italic font-medium">meaningful</span> together.
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
                 viewport={{ once: false }}
                 whileHover={{ y: -5 }}
                 href={`mailto:${CONTACT.primaryEmail}`} 
-                className="text-2xl font-medium text-white hover:text-primary transition-all duration-300 decoration-primary/30 underline underline-offset-[12px] decoration-[1px]"
+                className="sm:text-md md:text-lg lg:text-xl font-medium text-white hover:text-primary transition-all duration-300 decoration-primary/30 underline underline-offset-[12px] decoration-[1px]"
               >
                 {CONTACT.primaryEmail}
               </motion.a>
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
                     transition={{ delay: 0.1 }}
                     href={`tel:${CONTACT.phoneValue}`}
                     whileHover={{ color: '#CA79FC' }}
-                    className="text-muted/60 hover:text-primary transition-colors text-lg tracking-tight"
+                    className="text-muted/60 hover:text-primary transition-colors text-md tracking-tight"
                   >
                     {CONTACT.phone}
                   </motion.a>
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
                     transition={{ delay: 0.2 }}
                     href={`mailto:${CONTACT.secondaryEmail}`}
                     whileHover={{ color: '#CA79FC' }}
-                    className="text-muted/60 hover:text-primary transition-colors text-lg tracking-tight"
+                    className="text-muted/60 hover:text-primary transition-colors text-md tracking-tight"
                   >
                     {CONTACT.secondaryEmail}
                   </motion.a>

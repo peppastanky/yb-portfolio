@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
                     textShadow: "0 0 30px rgba(202, 121, 252, 0.6)",
                     transition: { type: "spring", stiffness: 400, damping: 10 }
                   }}
-                  className="text-[18vw] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] block will-change-transform cursor-default transition-colors duration-300"
+                  className="text-[19vw] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] block will-change-transform cursor-default transition-colors duration-300"
                 >
                   {char}
                 </motion.span>
@@ -109,7 +109,7 @@ const Hero: React.FC = () => {
                     textShadow: "0 0 30px rgba(202, 121, 252, 0.6)",
                     transition: { type: "spring", stiffness: 400, damping: 10 }
                   }}
-                  className="text-[18vw] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] block will-change-transform cursor-default transition-colors duration-300"
+                  className="text-[19vw] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] block will-change-transform cursor-default transition-colors duration-300"
                 >
                   {char}
                 </motion.span>
