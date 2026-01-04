@@ -132,6 +132,29 @@ const EducationItem = ({ item, idx }: { item: ExperienceItem, idx: number }) => 
                 </div>
               )}
 
+              {/* Scholarships */}
+              {item.details.scholarships && item.details.scholarships.length > 0 && (
+                <div>
+                  <h6 className="text-xs font-bold uppercase tracking-wider text-primary/80 mb-3 flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-primary/60"></span>
+                    Scholarships & Awards
+                  </h6>
+                  <div className="grid gap-2">
+                    {item.details.scholarships.map((scholarship, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.05 }}
+                        className="text-sm text-white/90 font-medium pl-4 py-2 border-l-2 border-primary/50 bg-primary/5 hover:border-primary hover:bg-primary/10 transition-all rounded-r"
+                      >
+                        {scholarship}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Leadership */}
               {item.details.leadership && item.details.leadership.length > 0 && (
                 <div>
@@ -200,6 +223,29 @@ const EducationItem = ({ item, idx }: { item: ExperienceItem, idx: number }) => 
                       </div>
                     </div>
                   )}
+                </div>
+              )}
+
+              {/* Subjects Studied */}
+              {item.details.subjects && item.details.subjects.length > 0 && (
+                <div>
+                  <h6 className="text-xs font-bold uppercase tracking-wider text-primary/80 mb-3 flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-primary/60"></span>
+                    Subjects Studied
+                  </h6>
+                  <div className="grid gap-2">
+                    {item.details.subjects.map((subject, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.05 }}
+                        className="text-sm text-white/70 pl-4 py-1.5 border-l-2 border-primary/20"
+                      >
+                        {subject}
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               )}
 

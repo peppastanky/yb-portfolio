@@ -136,8 +136,8 @@ export const EXPERIENCE: ExperienceItem[] = [
         'NYJC Basketball EXCO AY22/23',
         'Facilitator - Civics Tutorial Orientation 2023'
       ],
-      achievements: [
-        'Studied H2 Math, Chemistry, Biology and H1 Economics'
+      subjects: [
+        'H2 Math, Chemistry, Biology and H1 Economics'
       ],
       communityService: [
         'House Decluttering For Elderly @Fei Yue Community Services (2022 & 2023)',
@@ -155,6 +155,12 @@ export const EXPERIENCE: ExperienceItem[] = [
       score: 'Net score of 9',
       leadership: [
         'Netball Committee Member'
+      ],
+      scholarships: [
+        'Chinese Language Elective Scholarship (CLES) - Ministry of Education (2020-2021)',
+        'Education Merit Award - South East Community Development Council (2019)',
+        'Edusave Certificate of Academic Achievement - Ministry of Education (2019)',
+        'Edusave Good Progress Award - Ministry of Education (2018)'
       ],
       achievements: [
         'Represented School in NSG Netball Championships C Division 2019',

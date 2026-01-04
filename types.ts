@@ -42,6 +42,8 @@ export interface ExperienceItem {
       exemplary?: string[];
       relevant?: string[];
     };
+    subjects?: string[];
+    scholarships?: string[];
     achievements?: string[];
     communityService?: string[];
     score?: string;
