@@ -19,17 +19,18 @@ export const PROJECTS: Project[] = [
   {
     id: 'eventurer',
     title: 'Eventurer',
-    subheadline: 'A student-built web app for discovering events and forming teams.',
-    description: "Eventurer helps students find events and connect with others based on shared interests and availability. I focused on the frontend—building user-facing interfaces, designing interaction flows, and integrating client-side APIs to make the experience feel clear and responsive. This project was developed as part of SMU's Web Application Development II course, where it earned an A grade.",
+    subheadline: 'A mood-based event discovery platform for Singapore - built by a team of 4.',
+    shortDescription: "A web application that helps users discover events in Singapore through an interactive mood quiz. Features include personalized recommendations, integrated booking, Google Maps routing, and an AI chatbot.",
+    description: "Eventurer is a web application that helps users discover and attend events in Singapore based on their current mood. Developed as a 4-person team project for SMU's Web Application Development II course, I led the frontend development while collaborating closely with teammates on backend systems and API integrations. The platform features an interactive mood quiz that recommends personalized events, integrated booking with Stripe payments, Google Maps routing, event forums, and an AI-powered FAQ chatbot. The project earned an A grade.",
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Three.js', 'Blender', 'Google Maps API', 'Gemini API', 'UX Design'],
     contributions: [
-      'Built user-facing interfaces with React and TypeScript, focusing on component structure and smooth user flows.',
+      'Built user-facing interfaces with React and TypeScript, refining the UI/UX for the mood quiz, event browsing and filtering, and event detail pages.',
       'Designed and implemented a 3D landing page using Three.js and assets created in Blender, with a non-3D fallback for performance and accessibility.',
-      'Integrated Google Maps API to add a "How to get there" feature, giving users location and navigation context.',
-      'Built an FAQ chatbot using Gemini API to reduce friction and provide quick, contextual help.',
-      'Designed event discovery flows with Framer Motion, refining interaction details like hover states and transitions to guide attention.',
-      'Worked closely with teammates who handled backend (Firebase, Express.js) and integrations (Stripe, Eventbrite), connecting frontend features to their systems.',
-      'Developed as part of SMU Web Application Development II course project (Grade: A-)'
+      'Integrated Google Maps API to provide route planning and navigation features, helping users find directions to events.',
+      'Built an AI-powered FAQ chatbot using Gemini API to provide contextual help and reduce user friction.',
+      'Designed interactive event discovery flows with Framer Motion, refining hover states, transitions, and micro-interactions to create an engaging user experience.',
+      'Worked closely with 3 teammates who handled backend (Firebase, Express.js) and integrations (Stripe for payments, Eventbrite for event data), connecting frontend features to their systems.',
+      'Coordinated with the team to ensure seamless integration between frontend UI and backend services throughout the development process.'
     ],
     techStack: {
       frontend: ['TypeScript', 'React', 'Tailwind CSS', 'Framer Motion'],

@@ -33,6 +33,7 @@ const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [lenis, setLenis] = useState<Lenis | null>(null);
   const [savedScrollPosition, setSavedScrollPosition] = useState(0);
+  const [shouldScrollToProjects, setShouldScrollToProjects] = useState(false);
 
   // Initialize Lenis smooth scroll
   useEffect(() => {
@@ -88,15 +89,24 @@ const App: React.FC = () => {
       } else {
         window.scrollTo(0, 0);
       }
-    } else if (currentPage === 'home' && savedScrollPosition > 0) {
-      // Returning to home - restore saved position
+    } else if (currentPage === 'home' && !shouldScrollToProjects && savedScrollPosition > 0) {
+      // Returning to home - restore saved position only if not going to projects
       if (lenis) {
         lenis.scrollTo(savedScrollPosition, { immediate: true });
       } else {
         window.scrollTo(0, savedScrollPosition);
       }
+    } else if (currentPage === 'home' && shouldScrollToProjects) {
+      // Navigate to projects section
+      setTimeout(() => {
+        const projectsSection = document.getElementById('projects');
+        if (projectsSection && lenis) {
+          lenis.scrollTo(projectsSection, { offset: -100, duration: 0.8 });
+        }
+        setShouldScrollToProjects(false); // Reset flag
+      }, 200);
     }
-  }, [currentPage, lenis, savedScrollPosition]);
+  }, [currentPage, lenis, savedScrollPosition, shouldScrollToProjects]);
 
   // Scrolls to top and changes the "page"
   const handleNavigate = (page: string) => {
@@ -111,6 +121,7 @@ const App: React.FC = () => {
   
   const handleNavigateBack = () => {
     window.history.pushState(null, '', '/');
+    setShouldScrollToProjects(true); // Set flag to scroll to projects
     setCurrentPage('home');
   }
 
@@ -119,7 +130,7 @@ const App: React.FC = () => {
 
   return (
     <LenisContext.Provider value={lenis}>
-      <Layout>
+      <Layout onNavigateHome={handleNavigateBack}>
         <AnimatePresence mode="wait">
           {projectId ? (
             <ProjectDetail 

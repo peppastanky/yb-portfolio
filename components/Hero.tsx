@@ -1,5 +1,5 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import ScrambleText from './ScrambleText';
 import Magnetic from './Magnetic';
@@ -7,6 +7,16 @@ import { CONTACT } from '../constants';
 
 const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [showHint, setShowHint] = useState(true);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  // Auto-hide hint after 6 seconds
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowHint(false);
+    }, 8000);
+    return () => clearTimeout(timer);
+  }, []);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -39,6 +49,13 @@ const Hero: React.FC = () => {
 
   const nameYu = "YU".split("");
   const nameBing = "BING".split("");
+
+  const handleLetterHover = () => {
+    if (!hasInteracted) {
+      setHasInteracted(true);
+      setShowHint(false);
+    }
+  };
 
   const socialLinks = [
     { 
@@ -75,13 +92,42 @@ const Hero: React.FC = () => {
         style={{ opacity, scale, filter: blur }}
         className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden"
       >
-        <div className="relative z-10 w-full flex flex-col items-center px-4 overflow-hidden">
+        <div className="relative z-10 w-full flex flex-col items-center px-4 overflow-visible">
+          {/* Hover hint - only on desktop */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ 
+              opacity: showHint ? [0, 1, 1, 0.8, 1, 1, 0] : 0,
+              y: [0, 8, 0]
+            }}
+            transition={{ 
+              opacity: { 
+                delay: 2, 
+                duration: 8,
+                times: [0, 0.12, 0.35, 0.5, 0.65, 0.85, 1],
+                ease: "easeInOut"
+              },
+              y: { 
+                delay: 2,
+                duration: 1.5, 
+                repeat: Infinity,
+                repeatType: "loop",
+                ease: "easeInOut"
+              }
+            }}
+            style={{ opacity: showHint ? 1 : 0 }}
+            className="hidden lg:block absolute -top-[8%] text-[11px] text-primary/50 font-light tracking-[0.3em] uppercase pointer-events-none"
+          >
+            ↓ hover over me ↓
+          </motion.div>
+
           <div className="flex flex-row items-center justify-center font-bold leading-none tracking-[-0.08em] select-none text-white whitespace-nowrap w-full overflow-hidden">
             <motion.div style={{ x: yuX }} className="flex">
               {nameYu.map((char, i) => (
                 <motion.span
                   key={i}
                   variants={letterVars}
+                  onHoverStart={handleLetterHover}
                   whileHover={{ 
                     color: '#CA79FC', 
                     scale: 1.05,
@@ -102,6 +148,7 @@ const Hero: React.FC = () => {
                 <motion.span
                   key={i}
                   variants={letterVars}
+                  onHoverStart={handleLetterHover}
                   whileHover={{ 
                     color: '#CA79FC', 
                     scale: 1.05,

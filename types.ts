@@ -3,6 +3,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  shortDescription?: string;
   tags: string[];
   link?: string;
   subheadline?: string;

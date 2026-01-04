@@ -74,8 +74,8 @@ const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
                 <h4 className="text-5xl sm:text-4xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-white group-hover:text-primary transition-colors duration-500 leading-tight">
                   {featuredProject.title}
                 </h4>
-                <p className=" mt-4 sm:mt-5 md:mt-6 text-base sm:text-md md:text-md lg:text-lg text-muted/90 max-w-2xl leading-relaxed line-clamp-3 sm:line-clamp-4 md:line-clamp-none">
-                  {featuredProject.description}
+                <p className=" mt-4 sm:mt-5 md:mt-6 text-base sm:text-md md:text-md lg:text-lg text-muted/90 max-w-2xl leading-relaxed">
+                  {featuredProject.shortDescription || featuredProject.description}
                 </p>
               </div>
 

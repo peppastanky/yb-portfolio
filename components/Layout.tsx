@@ -7,9 +7,10 @@ import CursorGlow from './CursorGlow';
 
 interface LayoutProps {
   children: React.ReactNode;
+  onNavigateHome?: () => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, onNavigateHome }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const lenis = useContext(LenisContext);
@@ -30,13 +31,33 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, [lenis]);
 
   const scrollToSection = (id: string) => {
-    if (id === 'top') {
-      lenis?.scrollTo(0);
+    // If we're on a project detail page, navigate home first
+    if (window.location.pathname.startsWith('/project/')) {
+      if (onNavigateHome) {
+        onNavigateHome();
+        // Wait for navigation to complete, then scroll
+        setTimeout(() => {
+          if (id === 'top') {
+            lenis?.scrollTo(0);
+          } else {
+            const element = document.getElementById(id);
+            const navHeight = navRef.current?.getBoundingClientRect().height || 0;
+            if (element) {
+              lenis?.scrollTo(element, { offset: -navHeight - 16 });
+            }
+          }
+        }, 100);
+      }
     } else {
-      const element = document.getElementById(id);
-      const navHeight = navRef.current?.getBoundingClientRect().height || 0;
-      if (element) {
-        lenis?.scrollTo(element, { offset: -navHeight - 16 });
+      // We're already on home page, just scroll
+      if (id === 'top') {
+        lenis?.scrollTo(0);
+      } else {
+        const element = document.getElementById(id);
+        const navHeight = navRef.current?.getBoundingClientRect().height || 0;
+        if (element) {
+          lenis?.scrollTo(element, { offset: -navHeight - 16 });
+        }
       }
     }
     setMobileMenuOpen(false); // Close mobile menu after navigation
