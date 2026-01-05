@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Magnetic from './Magnetic';
 import { LenisContext } from './LenisContext';
 import CursorGlow from './CursorGlow';
+import CustomCursor from './CustomCursor';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -64,8 +65,9 @@ const Layout: React.FC<LayoutProps> = ({ children, onNavigateHome }) => {
   };
 
   return (
-    <div className="min-h-screen font-sans selection:bg-primary selection:text-black bg-background text-white overflow-x-hidden relative">
+    <div className="min-h-screen font-sans selection:bg-primary selection:text-black bg-background text-white overflow-x-hidden relative cursor-none">
       <CursorGlow />
+      <CustomCursor />
       
       <div className="fixed top-6 left-0 right-0 z-[100] flex justify-center pointer-events-none px-4">
         <motion.nav
