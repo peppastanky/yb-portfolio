@@ -38,7 +38,6 @@ const CustomCursor: React.FC = () => {
       } else {
         setCursorText('');
       }
-      });
     };
 
     window.addEventListener('mousemove', updateMousePosition, { passive: true });
