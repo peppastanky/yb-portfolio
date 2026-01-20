@@ -10,14 +10,16 @@ const CustomCursor: React.FC = () => {
   const mouseY = useMotionValue(-100);
 
   // Spring physics configuration for smooth, elastic motion
-  const springConfig = { damping: 20, stiffness: 350, mass: 0.1 };
+  const springConfig = { damping: 30, stiffness: 400, mass: 0.5 };
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+      requestAnimationFrame(() => {
+        mouseX.set(e.clientX);
+        mouseY.set(e.clientY);
+      });
 
       const target = e.target as HTMLElement;
       
@@ -36,9 +38,10 @@ const CustomCursor: React.FC = () => {
       } else {
         setCursorText('');
       }
+      });
     };
 
-    window.addEventListener('mousemove', updateMousePosition);
+    window.addEventListener('mousemove', updateMousePosition, { passive: true });
     return () => window.removeEventListener('mousemove', updateMousePosition);
   }, [mouseX, mouseY]);
 
@@ -52,7 +55,7 @@ const CustomCursor: React.FC = () => {
         animate={{
           scale: isHovering ? 2 : 1,
         }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
+        transition={{ duration: 0.2, ease: 'easeOut' }}
         className="absolute -translate-x-1/2 -translate-y-1/2 w-10 h-10 border border-primary/60 rounded-full flex items-center justify-center"
         style={{ mixBlendMode: 'difference' }}
       >
@@ -61,7 +64,7 @@ const CustomCursor: React.FC = () => {
             opacity: isHovering ? 1 : 0,
             scale: isHovering ? 1 : 0.5,
           }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
           className="text-primary text-[5px] font-light uppercase tracking-[0.2em]"
           style={{ mixBlendMode: 'difference' }}
         >

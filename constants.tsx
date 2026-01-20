@@ -153,7 +153,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     period: '2018 - 2021',
     type: 'education',
     details: {
-      score: 'Net score of 9',
+      score: Raw score of 9',
       leadership: [
         'Netball Committee Member'
       ],
